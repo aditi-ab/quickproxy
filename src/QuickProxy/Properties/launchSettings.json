@@ -1,0 +1,30 @@
+{
+  "profiles": {
+    "https": {
+      "commandName": "Project",
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "Development",
+        "SERVERNAME": "dev"
+      },
+      "dotnetRunMessages": true,
+      "applicationUrl": "https://localhost:7159"
+    },
+    "Container (.NET SDK)": {
+      "commandName": "SdkContainer",
+      "launchUrl": "http://localhost:9000",
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "Development",
+        "Listen__HttpPort": "18080",
+        "Listen__HttpsPort": "18443",
+        "Listen__InternalPort": "9000",
+        "Listen__AdminUseHttps": "false",
+        "Listen__AdminAccess": "any",
+        "TemplateValues__Server__Name": "dev-server"
+      },
+      "publishAllPorts": false,
+      "useSSL": true,
+      "containerRunArguments": "--user root -p 18080:18080 -p 18443:18443 -p 9000:9000 -v \"D:\\ContainerData\\QuickProxy\\Data:/app/Data\" -v \"/var/run/docker.sock:/var/run/docker.sock\" --label quickproxy.role=system"
+    }
+  },
+  "$schema": "https://json.schemastore.org/launchsettings.json"
+}

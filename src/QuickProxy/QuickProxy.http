@@ -1,0 +1,6 @@
+@QuickProxy_HostAddress = http://localhost:5045
+
+GET {{QuickProxy_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

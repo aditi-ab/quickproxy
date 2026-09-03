@@ -1,0 +1,60 @@
+<Project>
+    <PropertyGroup>
+        <PublishProfile>DefaultContainer</PublishProfile>
+        <ContainerRuntimeIdentifier>win-x64</ContainerRuntimeIdentifier>
+
+        <!-- SDK container settings -->
+        <EnableSdkContainerSupport>true</EnableSdkContainerSupport>
+        <EnableSdkContainerDebugging>True</EnableSdkContainerDebugging>
+        <ContainerRepository>quick.proxy</ContainerRepository>
+
+        <!-- Optional if you want the generated image metadata -->
+        <ContainerGenerateLabels>true</ContainerGenerateLabels>
+    </PropertyGroup>
+
+    <PropertyGroup Condition="'$(RuntimeIdentifier)' == 'win-x64' or '$(ContainerRuntimeIdentifier)' == 'win-x64'">
+        <ContainerBaseImage>mcr.microsoft.com/dotnet/aspnet:10.0-nanoserver-ltsc2022</ContainerBaseImage>
+        <!--<ContainerWorkingDirectory>C:\app\</ContainerWorkingDirectory>-->
+        <ContainerImageTags>$(Version)-windows;windows-latest</ContainerImageTags>
+    </PropertyGroup>
+
+    <PropertyGroup Condition="'$(RuntimeIdentifier)' == 'linux-x64' or '$(ContainerRuntimeIdentifier)' == 'linux-x64'">
+        <ContainerBaseImage>mcr.microsoft.com/dotnet/aspnet:10.0</ContainerBaseImage>
+        <!--<ContainerWorkingDirectory>/app/</ContainerWorkingDirectory>-->
+        <ContainerImageTags>$(Version)-linux;linux-latest</ContainerImageTags>
+    </PropertyGroup>
+
+    <ItemGroup Condition="'$(RuntimeIdentifier)' == 'win-x64' or '$(ContainerRuntimeIdentifier)' == 'win-x64'">
+        <ContainerEnvironmentVariable Include="Containers__Endpoint" Value="npipe://./pipe/docker_engine" />
+    </ItemGroup>
+
+    <ItemGroup Condition="'$(RuntimeIdentifier)' == 'linux-x64' or '$(ContainerRuntimeIdentifier)' == 'linux-x64'">
+        <ContainerEnvironmentVariable Include="Containers__Endpoint" Value="unix:///var/run/docker.sock" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <ContainerEnvironmentVariable Include="ASPNETCORE_ENVIRONMENT" Value="Production" />
+        <ContainerEnvironmentVariable Include="Listen__HttpPort" Value="80" />
+        <ContainerEnvironmentVariable Include="Listen__HttpsPort" Value="443" />
+        <ContainerEnvironmentVariable Include="Listen__AdminAccess" Value="any" />
+
+        <ContainerPort Include="80" Type="tcp" />
+        <ContainerPort Include="443" Type="tcp" />
+        <ContainerPort Include="9000" Type="tcp" />
+
+        <ContainerLabel Include="org.opencontainers.image.title" Value="QuickProxy" />
+        <ContainerLabel Include="org.opencontainers.image.version" Value="$(Version)" />
+        <ContainerLabel Include="org.opencontainers.image.description"
+                        Value="QuickProxy reverse proxy and configuration control plane" />
+        <ContainerLabel Include="org.opencontainers.image.source" Value="https://github.com/aditi-ab/quickproxy" />
+        <ContainerLabel Include="quickproxy.role" Value="system" />
+    </ItemGroup>
+
+    <PropertyGroup Condition="'$(RuntimeIdentifier)' == 'linux-x64'">
+        <ContainerArchiveOutputPath>$(BaseOutputPath)$(Configuration)/$(TargetFramework)/$(RuntimeIdentifier)/QuickProxy.tar.gz</ContainerArchiveOutputPath>
+    </PropertyGroup>
+
+    <PropertyGroup Condition="'$(RuntimeIdentifier)' == 'win-x64'">
+        <ContainerArchiveOutputPath>$(BaseOutputPath)$(Configuration)\$(TargetFramework)\$(RuntimeIdentifier)\QuickProxy.tar.gz</ContainerArchiveOutputPath>
+    </PropertyGroup>
+</Project>

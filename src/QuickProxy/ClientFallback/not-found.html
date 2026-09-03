@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>404 Site Not Found</title>
+    <style>
+    :root { color-scheme: dark; }
+    body {
+      margin: 0;
+      min-height: 100vh;
+      display: grid;
+      place-items: center;
+      background: radial-gradient(circle at top, #243b53, #0b1020 62%);
+      color: #e6edf7;
+      font: 16px/1.5 "Segoe UI", system-ui, sans-serif;
+    }
+    main {
+      width: min(640px, calc(100vw - 32px));
+      padding: 32px;
+      border-radius: 20px;
+      background: rgba(9, 14, 28, 0.82);
+      border: 1px solid rgba(255,255,255,0.08);
+      box-shadow: 0 24px 80px rgba(0, 0, 0, 0.35);
+    }
+    .code {
+      display: inline-block;
+      padding: 6px 10px;
+      border-radius: 999px;
+      background: rgba(59, 130, 246, 0.16);
+      color: #7cc4ff;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+    }
+    h1 { margin: 16px 0 10px; font-size: clamp(2rem, 5vw, 3rem); }
+    p { margin: 0; color: #afbdd1; }
+  </style>
+</head>
+<body>
+<main>
+    <div class="code">404</div>
+    <h1>Site Not Found</h1>
+    <p>QuickProxy could not match this host to an active upstream route. Verify the host mapping and route configuration.</p>
+</main>
+</body>
+</html>

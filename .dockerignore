@@ -1,0 +1,16 @@
+**/bin
+**/obj
+.artifacts
+.dotnet-cli
+.dotnet-home
+.nuget
+.vs
+documentation/node_modules
+documentation/.vitepress/dist
+documentation/.vitepress/.temp
+src/QuickProxy.Admin/node_modules
+src/QuickProxy.Admin/dist
+src/QuickProxy/wwwroot/admin/
+src/QuickProxy/wwwroot/docs/
+src/QuickProxy/Data
+TestResults

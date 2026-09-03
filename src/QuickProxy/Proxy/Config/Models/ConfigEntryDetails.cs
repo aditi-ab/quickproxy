@@ -1,0 +1,39 @@
+namespace QuickProxy.Proxy.Config.Models;
+
+public sealed class ConfigEntryDetails
+{
+    public string Key { get; set; } = string.Empty;
+    public string Value { get; set; } = string.Empty;
+    public string? BinaryBase64 { get; set; }
+    public string? EncryptedValue { get; set; }
+    public string? EncryptedBinaryBase64 { get; set; }
+    public string? EncryptedLabels { get; set; }
+    public string? MediaType { get; set; }
+    public ConfigEntryType EntryType { get; set; } = ConfigEntryType.Data;
+    public ConfigPayloadKind PayloadKind { get; set; } = ConfigPayloadKind.Text;
+    public List<ConfigLabel> Labels { get; set; } = [];
+    public DateTimeOffset UpdatedAtUtc { get; set; } = DateTimeOffset.UtcNow;
+    public string? UpdatedBy { get; set; }
+    public string Source { get; set; } = "local";
+    public bool ReadOnly { get; set; }
+    public bool HasLocalOverride { get; set; }
+    public bool IsRevealed { get; set; }
+    public ConfigEntryVariant? Local { get; set; }
+    public ConfigEntryVariant? Remote { get; set; }
+}
+
+public sealed class ConfigEntryVariant
+{
+    public string Value { get; set; } = string.Empty;
+    public string? BinaryBase64 { get; set; }
+    public string? EncryptedValue { get; set; }
+    public string? EncryptedBinaryBase64 { get; set; }
+    public string? EncryptedLabels { get; set; }
+    public string? MediaType { get; set; }
+    public ConfigEntryType EntryType { get; set; } = ConfigEntryType.Data;
+    public ConfigPayloadKind PayloadKind { get; set; } = ConfigPayloadKind.Text;
+    public List<ConfigLabel> Labels { get; set; } = [];
+    public DateTimeOffset UpdatedAtUtc { get; set; } = DateTimeOffset.UtcNow;
+    public string? UpdatedBy { get; set; }
+    public bool IsRevealed { get; set; }
+}

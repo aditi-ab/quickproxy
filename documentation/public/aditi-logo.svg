@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1254 1254" role="img" aria-labelledby="title desc">
+  <title id="title">Aditi logo</title>
+  <desc id="desc">Minimal geometric A icon with indigo, cyan, blue and violet gradients.</desc>
+  <defs>
+    <linearGradient id="leftLeg" x1="625" y1="267" x2="285" y2="930" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#3A3FFB"/><stop offset="32%" stop-color="#3135E6"/><stop offset="67%" stop-color="#2227B8"/><stop offset="100%" stop-color="#1B1488"/>
+    </linearGradient>
+    <linearGradient id="rightLeg" x1="650" y1="285" x2="970" y2="925" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#18D4E8"/><stop offset="28%" stop-color="#23BDF3"/><stop offset="57%" stop-color="#368DFB"/><stop offset="80%" stop-color="#6256F8"/><stop offset="100%" stop-color="#731CF3"/>
+    </linearGradient>
+    <linearGradient id="diamond" x1="700" y1="735" x2="560" y2="940" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#1FC4F3"/><stop offset="35%" stop-color="#288EFA"/><stop offset="66%" stop-color="#3B44F3"/><stop offset="100%" stop-color="#5A0DD8"/>
+    </linearGradient>
+  </defs>
+  <path d="M 625 267 C 617 267, 610 272, 605 280 L 270 764 C 261 777, 256 793, 256 811 L 256 926 C 256 934, 261 939, 269 939 L 331 939 C 345 939, 357 932, 366 920 L 625 521 Z" fill="url(#leftLeg)"/>
+  <path d="M 625 267 C 633 267, 640 272, 645 280 L 984 764 C 993 777, 998 793, 998 811 L 998 926 C 998 934, 993 939, 985 939 L 923 939 C 909 939, 897 932, 888 920 L 625 521 Z" fill="url(#rightLeg)"/>
+  <path d="M 626 700 C 631 700, 635 702, 639 707 L 732 816 C 739 824, 739 833, 732 841 L 639 949 C 635 954, 631 956, 626 956 C 621 956, 617 954, 613 949 L 520 841 C 513 833, 513 824, 520 816 L 613 707 C 617 702, 621 700, 626 700 Z" fill="url(#diamond)"/>
+</svg>

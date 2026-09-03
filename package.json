@@ -1,0 +1,15 @@
+{
+  "name": "quickproxy",
+  "private": true,
+  "packageManager": "yarn@1.22.22",
+  "workspaces": ["src/QuickProxy.Admin", "documentation"],
+  "resolutions": { "eslint-plugin-jsdoc": "62.8.0", "eslint-plugin-regexp": "3.1.0" },
+  "scripts": {
+    "build:ui": "yarn --cwd Packages/Aditify build",
+    "build:admin": "yarn build:ui && yarn workspace quickproxy-admin build",
+    "build:docs": "yarn workspace quickproxy-docs docs:build",
+    "build": "yarn build:admin && yarn build:docs",
+    "test": "yarn --cwd Packages/Aditify test && yarn workspace quickproxy-admin test",
+    "type-check": "yarn build:ui && yarn workspace quickproxy-admin type-check"
+  }
+}

@@ -1,0 +1,3 @@
+[submodule "Packages/Aditify"]
+	path = Packages/Aditify
+	url = https://github.com/aditi-ab/aditify.git

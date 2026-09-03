@@ -1,0 +1,81 @@
+<svg xmlns="http://www.w3.org/2000/svg"
+     viewBox="36 117 435 278"
+     role="img"
+     aria-labelledby="title desc">
+
+  <title id="title">QuickProxy icon</title>
+  <desc id="desc">Three routed inputs flowing through a containerized reverse proxy to a single output.</desc>
+
+  <defs>
+    <!-- Important: fixed user-space coordinates avoid broken gradients on zero-height/zero-width strokes -->
+    <linearGradient id="brand"
+                    x1="40" y1="420"
+                    x2="470" y2="90"
+                    gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#5B21B6"/>
+      <stop offset="28%" stop-color="#4F46E5"/>
+      <stop offset="62%" stop-color="#3B82F6"/>
+      <stop offset="100%" stop-color="#22D3EE"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Input routes -->
+  <g fill="none"
+     stroke="url(#brand)"
+     stroke-width="18"
+     stroke-linecap="round"
+     stroke-linejoin="round">
+
+    <path d="M72 182 H160"/>
+    <path d="M72 256 H180"/>
+    <path d="M72 330 H160"/>
+
+    <!-- Outer routing frame -->
+    <path d="M160 182
+             L204 126
+             H342
+             L406 256
+             L342 386
+             H204
+             L160 330"/>
+
+    <!-- Output route -->
+    <path d="M406 256 H456"/>
+
+    <!-- Output arrow -->
+    <path d="M438 232 L462 256 L438 280"/>
+  </g>
+
+  <!-- Input nodes -->
+  <g fill="url(#brand)">
+    <circle cx="54" cy="182" r="18"/>
+    <circle cx="54" cy="256" r="18"/>
+    <circle cx="54" cy="330" r="18"/>
+  </g>
+
+  <!-- Container cube -->
+  <g fill="none"
+     stroke="url(#brand)"
+     stroke-width="16"
+     stroke-linecap="round"
+     stroke-linejoin="round">
+
+    <!-- top -->
+    <path d="M256 188
+             L316 222
+             L256 256
+             L196 222
+             Z"/>
+
+    <!-- left face -->
+    <path d="M196 222
+             V292
+             L256 326
+             V256"/>
+
+    <!-- right face -->
+    <path d="M316 222
+             V292
+             L256 326"/>
+  </g>
+</svg>

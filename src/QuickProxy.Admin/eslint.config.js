@@ -1,0 +1,76 @@
+import antfu from '@antfu/eslint-config';
+
+export default antfu(
+  {
+    type: 'app',
+    formatters: {
+      css: true,
+      html: true,
+      markdown: 'prettier',
+    },
+    ignores: [
+      'dist/**',
+      'src/components.d.ts',
+      'src/services/__generated__/**',
+    ],
+    stylistic: {
+      indent: 2,
+      quotes: 'single',
+      semi: true,
+    },
+    typescript: true,
+    vue: {
+      overrides: {
+        'vue/block-order': ['error', {
+          order: ['template', 'script', 'style'],
+        }],
+      },
+    },
+  },
+  {
+    rules: {
+      'antfu/no-top-level-await': 'off',
+      'block-scoped-var': 'off',
+      'eqeqeq': 'off',
+      'no-case-declarations': 'off',
+      'no-console': 'off',
+      'no-unused-vars': 'off',
+      'no-var': 'off',
+      'node/prefer-global/process': 'off',
+      'regexp/no-empty-capturing-group': 'off',
+      'style/max-statements-per-line': 'off',
+      'style/no-mixed-spaces-and-tabs': 'off',
+      'style/padding-line-between-statements': [
+        'error',
+        { blankLine: 'always', prev: '*', next: ['const', 'let', 'var'] },
+        { blankLine: 'always', prev: ['const', 'let', 'var'], next: '*' },
+        { blankLine: 'always', prev: '*', next: ['if', 'for', 'while', 'switch', 'try'] },
+        { blankLine: 'always', prev: ['if', 'for', 'while', 'switch', 'try'], next: '*' },
+        { blankLine: 'any', prev: ['const', 'let', 'var'], next: ['const', 'let', 'var'] },
+      ],
+      'style/no-tabs': 'off',
+      'ts/method-signature-style': 'off',
+      'ts/no-redeclare': 'off',
+      'ts/no-use-before-define': 'off',
+      'ts/prefer-literal-enum-member': 'off',
+      'unicorn/prefer-number-properties': 'off',
+      'unused-imports/no-unused-vars': 'off',
+      'vars-on-top': 'off',
+      'vue/attributes-order': 'off',
+      'vue/attribute-hyphenation': 'off',
+      'vue/custom-event-name-casing': 'off',
+      'vue/no-lone-template': 'off',
+      'vue/no-mutating-props': 'off',
+      'vue/no-side-effects-in-computed-properties': 'off',
+      'vue/no-template-shadow': 'off',
+      'vue/no-unused-refs': 'off',
+      'vue/no-unused-vars': 'off',
+      'vue/no-use-v-if-with-v-for': 'off',
+      'vue/require-explicit-emits': 'off',
+      'vue/require-v-for-key': 'off',
+      'vue/valid-v-for': 'off',
+      'vue/valid-v-on': 'off',
+      'vue/valid-v-slot': 'off',
+    },
+  },
+);

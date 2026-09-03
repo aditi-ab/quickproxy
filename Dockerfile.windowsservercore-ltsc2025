@@ -1,0 +1,27 @@
+# escape=`
+FROM mcr.microsoft.com/windows/servercore:ltsc2025
+
+SHELL ["powershell", "-NoLogo", "-NoProfile", "-Command", "$ErrorActionPreference = 'Stop'; $ProgressPreference = 'SilentlyContinue';"]
+ARG APP_VERSION=0.9.0
+LABEL org.opencontainers.image.title="QuickProxy" `
+      org.opencontainers.image.description="QuickProxy for Windows Server Core LTSC 2025" `
+      org.opencontainers.image.version=${APP_VERSION}
+
+RUN New-Item -ItemType Directory -Force C:\app\Data | Out-Null; `
+    icacls C:\app\Data /grant '*S-1-5-20:(OI)(CI)F' /T | Out-Null
+
+WORKDIR C:\app
+COPY .container/windows/quickproxy/ .
+USER "NT AUTHORITY\NETWORK SERVICE"
+ENV ASPNETCORE_ENVIRONMENT=Production `
+    Listen__HttpPort=80 `
+    Listen__HttpsPort=443 `
+    Listen__InternalPort=9000 `
+    Listen__AdminAccess=any `
+    Containers__Endpoint=npipe://./pipe/docker_engine `
+    Proxy__Storage__Provider=sqlite `
+    Proxy__Storage__ConnectionString="Data Source=C:\app\Data\quickproxy.db" `
+    DOTNET_EnableDiagnostics=0
+VOLUME ["C:\\app\\Data"]
+EXPOSE 80 443 9000
+ENTRYPOINT ["C:\\app\\QuickProxy.exe"]

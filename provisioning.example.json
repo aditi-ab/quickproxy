@@ -1,0 +1,133 @@
+{
+  "automaticTemplates": [
+    {
+      "id": "auto-webdesk",
+      "mode": "automaticContainer",
+      "enabled": true,
+      "domainNames": [],
+      "automaticContainer": {
+        "labelSelectors": [
+          {
+            "key": "app",
+            "valuePatterns": [
+              "webdesk"
+            ]
+          }
+        ],
+        "domainTemplates": [
+          "{label.app}.{server.name}.example.local"
+        ]
+      },
+      "forceSsl": false,
+      "cacheAssets": false,
+      "websockets": true,
+      "certificateId": "internal-cert",
+      "routes": [
+        {
+          "path": "/",
+          "rewriteMode": "preserve",
+          "rewriteTargetPath": null,
+          "upstreamMode": "container",
+          "upstream": {
+            "scheme": "http",
+            "host": "",
+            "port": 80
+          },
+          "container": {
+            "containerName": "",
+            "scheme": "http",
+            "port": 8080,
+            "portResolutionMode": "published",
+            "networkName": null
+          }
+        }
+      ],
+      "tls": {
+        "mode": "none",
+        "pfxPath": null,
+        "pfxPassword": null,
+        "pfxPasswordEnvVar": null,
+        "thumbprint": null,
+        "storeName": "My",
+        "storeLocation": "LocalMachine"
+      }
+    }
+  ],
+  "containerDefaultSets": [
+    {
+      "id": "web-base",
+      "labels": [
+        {
+          "key": "ops.owner",
+          "value": "platform"
+        }
+      ],
+      "envVars": [
+        {
+          "key": "INSTANCE_NAME",
+          "value": "{server.name}"
+        }
+      ],
+      "mountBindings": [
+        {
+          "hostPath": "C:\\Logs",
+          "containerPath": "C:\\Logs",
+          "readOnly": false
+        }
+      ]
+    }
+  ],
+  "certificates": [
+    {
+      "id": "internal-cert",
+      "mode": "pfx",
+      "pfxPassword": "changeit",
+      "pfxPasswordEnvVar": "",
+      "thumbprint": "",
+      "storeName": "My",
+      "storeLocation": "LocalMachine",
+      "files": {
+        "pfxBase64": "<base64-pfx-bytes>"
+      }
+    },
+    {
+      "id": "internal-pem-cert",
+      "mode": "files",
+      "pfxPassword": "",
+      "pfxPasswordEnvVar": "",
+      "thumbprint": "",
+      "storeName": "My",
+      "storeLocation": "LocalMachine",
+      "files": {
+        "certificatePemBase64": "<base64-certificate-pem-bytes>",
+        "keyPemBase64": "<base64-key-pem-bytes>",
+        "intermediatePemBase64": "<base64-intermediate-pem-bytes>"
+      }
+    },
+    {
+      "id": "internal-ca-issuer",
+      "mode": "issuer",
+      "issuerEnabled": true,
+      "issuerMatchDomains": [
+        "example.com"
+      ],
+      "issuerCaSource": "pathPem",
+      "caCertificatePath": "Data/Certificates/CA/{server.name}/ca-certificate.pem",
+      "caPrivateKeyPath": "Data/Certificates/CA/{server.name}/ca-key.pem",
+      "files": {}
+    },
+    {
+      "id": "internal-store-ca-issuer",
+      "mode": "issuer",
+      "issuerEnabled": true,
+      "issuerMatchDomains": [
+        "corp.local"
+      ],
+      "issuerCaSource": "storeThumbprint",
+      "caStoreThumbprint": "AA BB CC DD EE FF 11 22 33 44 55 66 77 88 99 00 AA BB CC DD",
+      "caStoreName": "My",
+      "caStoreLocation": "LocalMachine",
+      "files": {}
+    }
+  ]
+}
